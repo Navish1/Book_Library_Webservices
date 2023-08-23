@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+</head>
+<body>
+    <h2>ISBN Verification</h2>
+    <form method="POST" action="isbn.php">
+        <label for="ISBN">ISBN :</label>
+        <input type="text" name="ISBN" id="ISBN" required><br><br>
+
+        <label for="ISBNtype">ISBN Type:</label>
+        <select name="ISBNtype" id="ISBNtype" required>
+            <option value="ISBN13">ISBN13</option>
+            <option value="ISBN10">ISBN10</option>
+        </select><br><br>
+        
+        <input type="submit" value="Verify">
+    </form>
+</body>
+</html>
