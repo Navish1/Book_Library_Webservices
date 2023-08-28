@@ -1,0 +1,24 @@
+Home Page
+Links - 
+SOAP Existing - To Validate ISBN 13 of  a book  (OK)
+SOAP Creation-To search a book by its ISBN 13 from a database and get price and check availability
+REST CREATION - To add reviews and review
+REST Existing- 
+
+
+SQL Code to create the database:
+
+CREATE TABLE IF NOT EXISTS `book_review` (
+    `isbn` VARCHAR(20) PRIMARY KEY,
+    `book_name` VARCHAR(255),
+    `author_name` VARCHAR(255),
+    `review` VARCHAR(255)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+INSERT INTO `book_review` (`isbn`, `book_name`, `author_name`, `review`)
+VALUES
+    ('978-0061122415', 'To Kill a Mockingbird', 'Harper Lee', 'A classic novel that addresses issues of racism and moral growth.'),
+    ('978-0307474278', '1984', 'George Orwell', 'A dystopian novel that explores themes of totalitarianism and censorship.'),
+    ('978-1400031702', 'The Great Gatsby', 'F. Scott Fitzgerald', 'A story of wealth, excess, and the American Dream.'),
+    ('978-0544003415', 'The Hobbit', 'J.R.R. Tolkien', 'An adventure fantasy novel set in Middle-earth.'),
+    ('978-0679783268', 'Pride and Prejudice', 'Jane Austen', 'A classic romance novel featuring Elizabeth Bennet and Mr. Darcy');

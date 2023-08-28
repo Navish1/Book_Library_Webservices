@@ -1,0 +1,8 @@
+RewriteEngine On    # Turn on the rewriting engine
+# Rewrite for retrieving specific review by ISBN
+RewriteRule ^review/([0-9A-Za-z\-]+)$ read.php?isbn=$1 [QSA,L]
+# Rewrite for retrieving all reviews (no ISBN)
+RewriteRule ^review$ read.php [QSA,L]
+RewriteRule ^create$ create.php [NC,L]
+RewriteRule ^update$ update.php [NC,L]
+RewriteRule ^delete$ delete.php [NC,L]
