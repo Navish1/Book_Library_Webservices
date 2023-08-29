@@ -7,13 +7,34 @@
 <body>
     <div class="container">
         <h1>Book Reviews</h1>
+        <div class="links">
+            <a href="#fetchSection">Fetch Reviews</a>
+            <a href="#createSection">Create Review</a>
+        </div>
+    </div>
+    <div id="fetchSection" class="section">
+        <h2>Fetch Reviews</h2>
         <form id="isbnForm">
             <label for="isbn">Enter ISBN:</label>
             <input type="text" id="isbn" name="isbn" placeholder="Enter ISBN...">
             <button type="button" id="fetchButton">Fetch Reviews</button>
         </form>
-        <button type="button" id="fetchAllButton">Fetch All Books</button>
         <div id="reviewContainer"></div>
+    </div>
+    <div id="createSection" class="section">
+        <h2>Create Review</h2>
+        <form id="createReviewForm">
+            <label for="createIsbn">ISBN:</label>
+            <input type="text" id="createIsbn" name="createIsbn" placeholder="Enter ISBN...">
+            <label for="book_name">Book Name:</label>
+            <input type="text" id="book_name" name="book_name" placeholder="Enter Book Name...">
+            <label for="author_name">Author Name:</label>
+            <input type="text" id="author_name" name="author_name" placeholder="Enter Author Name...">
+            <label for="review">Review:</label>
+            <textarea id="review" name="review" placeholder="Enter Review..."></textarea>
+            <button type="button" id="createButton">Create Review</button>
+            <div id="createMessage"></div>
+        </form>
     </div>
     <script src="script.js"></script>
 </body>
