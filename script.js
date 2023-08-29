@@ -3,13 +3,19 @@ document.addEventListener("DOMContentLoaded", function() {
     const sections = document.querySelectorAll(".section");
     const fetchButton = document.getElementById("fetchButton");
     const createButton = document.getElementById("createButton");
+    const updateButton = document.getElementById("updateButton");
+    const deleteButton = document.getElementById("deleteButton");
     const isbnInput = document.getElementById("isbn");
     const createIsbnInput = document.getElementById("createIsbn");
+    const updateIsbnInput = document.getElementById("updateIsbn");
+    const deleteIsbnInput = document.getElementById("deleteIsbn");
     const bookNameInput = document.getElementById("book_name");
     const authorNameInput = document.getElementById("author_name");
     const reviewInput = document.getElementById("review");
     const reviewContainer = document.getElementById("reviewContainer");
     const createMessage = document.getElementById("createMessage");
+    const updateMessage = document.getElementById("updateMessage");
+    const deleteMessage = document.getElementById("deleteMessage");
 
     links.forEach(link => {
         link.addEventListener("click", function(e) {
@@ -39,6 +45,29 @@ document.addEventListener("DOMContentLoaded", function() {
             createReview(isbn, bookName, authorName, review);
         } else {
             createMessage.textContent = "Please fill in all fields.";
+        }
+    });
+
+    updateButton.addEventListener("click", function() {
+        const isbn = updateIsbnInput.value.trim();
+        const bookName = updateBookNameInput.value.trim();
+        const authorName = updateAuthorNameInput.value.trim();
+        const review = updateReviewInput.value.trim();
+
+        if (isbn !== "") {
+            updateReview(isbn, bookName, authorName, review);
+        } else {
+            updateMessage.textContent = "Please enter an ISBN.";
+        }
+    });
+
+    deleteButton.addEventListener("click", function() {
+        const isbn = deleteIsbnInput.value.trim();
+
+        if (isbn !== "") {
+            deleteReview(isbn);
+        } else {
+            deleteMessage.textContent = "Please enter an ISBN.";
         }
     });
 
@@ -99,6 +128,65 @@ document.addEventListener("DOMContentLoaded", function() {
         .catch(error => {
             console.error("Error creating review:", error);
             createMessage.textContent = "An error occurred while creating the review.";
+        });
+    }
+
+    function updateReview(isbn, bookName, authorName, review) {
+        const data = {
+            isbn: isbn,
+            book_name: bookName,
+            author_name: authorName,
+            review: review
+        };
+
+        updateMessage.textContent = "Updating review...";
+
+        fetch("http://localhost/Assignment/Book_Library_Webservices/update.php", {
+            method: "POST", 
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.message === "Review was updated.") {
+                updateMessage.textContent = "Review updated successfully.";
+            } else {
+                updateMessage.textContent = "Failed to update review.";
+            }
+        })
+        .catch(error => {
+            console.error("Error updating review:", error);
+            updateMessage.textContent = "An error occurred while updating the review.";
+        });
+    }
+
+    function deleteReview(isbn) {
+        deleteMessage.textContent = "Deleting review...";
+    
+        const data = {
+            isbn: isbn
+        };
+    
+        fetch("http://localhost/Assignment/Book_Library_Webservices/delete.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+            if (result.message === "Review was deleted.") {
+                deleteMessage.textContent = "Review deleted successfully.";
+            } else {
+                deleteMessage.textContent = "Failed to delete review.";
+            }
+        })
+        .catch(error => {
+            console.error("Error deleting review:", error);
+            deleteMessage.textContent = "An error occurred while deleting the review.";
         });
     }
 });

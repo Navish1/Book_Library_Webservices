@@ -10,6 +10,8 @@
         <div class="links">
             <a href="#fetchSection">Fetch Reviews</a>
             <a href="#createSection">Create Review</a>
+            <a href="#updateSection">Update Review</a>
+            <a href="#deleteSection">Delete Review</a>
         </div>
     </div>
     <div id="fetchSection" class="section">
@@ -36,6 +38,32 @@
             <div id="createMessage"></div>
         </form>
     </div>
+    <div id="updateSection" class="section">
+        <h2>Update Review</h2>
+        <form id="updateReviewForm">
+            <label for="updateIsbn">ISBN:</label>
+            <input type="text" id="updateIsbn" name="updateIsbn" placeholder="Enter ISBN...">
+            <label for="updateBookName">Book Name:</label>
+            <input type="text" id="updateBookName" name="updateBookName" placeholder="Enter Book Name...">
+            <label for="updateAuthorName">Author Name:</label>
+            <input type="text" id="updateAuthorName" name="updateAuthorName" placeholder="Enter Author Name...">
+            <label for="updateReview">Review:</label>
+            <textarea id="updateReview" name="updateReview" placeholder="Enter Review..."></textarea>
+            <button type="button" id="updateButton">Update Review</button>
+            <div id="updateMessage"></div>
+        </form>
+    </div>
+
+    <div id="deleteSection" class="section">
+        <h2>Delete Review</h2>
+        <form id="deleteReviewForm">
+            <label for="deleteIsbn">ISBN:</label>
+            <input type="text" id="deleteIsbn" name="deleteIsbn" placeholder="Enter ISBN...">
+            <button type="button" id="deleteButton">Delete Review</button>
+            <div id="deleteMessage"></div>
+        </form>
+    </div>
+    
     <script src="script.js"></script>
 </body>
 </html>
