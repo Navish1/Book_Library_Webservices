@@ -66,5 +66,22 @@ class Review{
      
         return false;
     }
+
+    function delete(){
+        $stmt = $this->conn->prepare("
+            DELETE FROM ".$this->reviewTable." 
+            WHERE isbn = ?");
+                
+        $this->isbn = htmlspecialchars(strip_tags($this->isbn));
+         
+        $stmt->bind_param("s", $this->isbn);
+         
+        if($stmt->execute()){
+            return true;
+        }
+         
+        return false;
+    }
+    
     
 }
